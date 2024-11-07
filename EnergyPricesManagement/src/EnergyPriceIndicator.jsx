@@ -6,7 +6,7 @@ function EnergyPriceIndicator(props) {
     return (
         <>
             <div className="rectangle">
-                <div className="rectangle-header">{props.hour}</div>
+                <div className={props.style}>{props.hour}</div>
                 <div className="rectangle-value">{props.price}</div>
             </div>
         </>

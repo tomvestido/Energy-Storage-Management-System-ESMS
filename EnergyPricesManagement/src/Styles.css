@@ -50,6 +50,20 @@
   border-radius: 8px;
 }
 
+.rectangle-header-orange {
+  width: 70px;       
+  height: 26px;
+  background-color: #D88500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Montserrat, sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  color: rgb(255, 255, 255);
+  border-radius: 8px;
+}
+
 .rectangle-value {
   width: 70px;       
   height: 34px;
