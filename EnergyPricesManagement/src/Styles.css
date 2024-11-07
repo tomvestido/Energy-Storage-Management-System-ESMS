@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px; /* Odstęp pomiędzy elementami */
+}
+
+.rectangle {
+  width: 70px;       /* Szerokość prostokąta */
+  height: 60px;       /* Wysokość prostokąta */
+  background-color: #ECEFF1; /* Kolor prostokąta */
+  border-radius: 8px; /* Zaokrąglenie rogów */
+  display:inline-block;
+  justify-content: center;
+  align-items: center;
+  font-family: Calibri, sans-serif;
+  font-size: 12px;
+  font-weight: bolder;
+  color: rgb(24, 24, 24);
+}
+
+.rectangle-header {
+  width: 70px;       
+  height: 28px;
+  background-color: #0b8fe7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Calibri, sans-serif;
+  font-size: 12px;
+  font-weight: bolder;
+  color: rgb(255, 255, 255);
+  border-radius: 8px;
+}
+
+.rectangle-value {
+  width: 70px;       
+  height: 32px;
+  background-color: #ECEFF1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Calibri, sans-serif;
+  font-size: 14px;
+  font-weight: bolder;
+  color: rgb(15, 15, 15);
+  border-radius: 8px;
+}
+
+.header {
+  font-family: 'Inter', sans-serif;  /* Czcionka Inter */
+  font-size: 32px;                   /* Rozmiar czcionki */
+  font-weight: 700;                  /* Pogrubienie czcionki */
+  color: #333;                       /* Kolor tekstu (ciemny, ale nie czarny) */
+  text-align: center;                /* Wyrównanie do środka */
+  line-height: 1.2;                  /* Wysokość linii dla lepszej czytelności */
+  letter-spacing: 1px;               /* Przestrzeń między literami */
+  margin: 40px 0;                    /* Marginesy górne i dolne */
+  padding: 10px 20px;                /* Padding wokół tekstu */
+  background-color: #F5F5F5;         /* Tło nagłówka */
+  border-radius: 10px;               /* Zaokrąglone rogi */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Delikatny cień dla efektu wypukłości */
+}
+
+
