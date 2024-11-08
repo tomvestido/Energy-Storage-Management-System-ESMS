@@ -1,9 +1,9 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import EnergyPriceList from './EnergyPriceList.jsx'
+import MainComp from './components/MainComp.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <EnergyPriceList />
+    <MainComp />
   </StrictMode>,
 )
