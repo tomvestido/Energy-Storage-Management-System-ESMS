@@ -1,0 +1,26 @@
+.battery-fill {
+    width: 300px;
+    height: 100px;
+    background-color: #20B202;
+
+}
+
+.container-white {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 60px 0;  
+    gap: 10px; /* Odstęp pomiędzy elementami */
+    background-color: white;
+}
+
+.section-element {
+    width: 532px;       /* Szerokość prostokąta */
+    height: 468px;       /* Wysokość prostokąta */
+    background-color: #ffffff; /* Kolor prostokąta */
+    border-radius: 8px; /* Zaokrąglenie rogów */
+    display:inline-block;
+    justify-content: center;
+    align-items: center;
+  }
+  

@@ -1,26 +1,27 @@
-import './Styles.css'
-import MeasurementIndicator from './MeasurementIndicator.jsx'
+import './CenterSection.css'
+import MeasurementIndicator from './components/MeasurementIndicator.jsx'
 
-function CenterSection(){
+function CenterSection(props){
 
     return(
         <>  
             <div className='section-element'> 
                 
                 <div className='container-white'>
-                    <MeasurementIndicator/>
-                    <MeasurementIndicator/>
-                    <MeasurementIndicator/>
+                    <MeasurementIndicator description="Down threshold"/>
+                    <MeasurementIndicator description="Status" value={props.bmsStatus}/>
+                    <MeasurementIndicator description="Up threshold"/>
                 </div>
 
-                
+                <div className='container-white'>
+                    <progress  className='battery-fill' value={props.batterySoC}  max={100} min={0}  />
 
-
+                </div>
 
                 <div className='container-white'>
-                    <MeasurementIndicator/>
-                    <MeasurementIndicator/>
-                    <MeasurementIndicator/>
+                    <MeasurementIndicator description="Recharging power" value={props.chargePower}/>
+                    <MeasurementIndicator description="State of Charge" value={props.batterySoC + " %"}/>
+                    <MeasurementIndicator description="Charging power" value={props.rechargePower}/>
                 </div>
      
             </div>    

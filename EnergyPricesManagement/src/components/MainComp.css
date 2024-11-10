@@ -3,4 +3,19 @@
 .text-transparent {
     background-color: transparent;
     font-family: Montserrat, sans-serif;
+    text-align: center;
 }
+
+.control-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-panels {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 80px 0;  
+    gap: 8px; /* Odstęp pomiędzy elementami */
+  }
