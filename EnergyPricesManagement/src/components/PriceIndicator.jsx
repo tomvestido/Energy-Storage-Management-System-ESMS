@@ -7,8 +7,8 @@ function PriceIndicator(props) {
         <>
             <div className="rectangle">
                 <div className={props.style}>{props.hour}</div>
-                <div className="rectangle-value">{props.price}</div>
-            </div>
+                <div className="rectangle-value">{props.price}</div>             
+            </div>       
         </>
     )
 }

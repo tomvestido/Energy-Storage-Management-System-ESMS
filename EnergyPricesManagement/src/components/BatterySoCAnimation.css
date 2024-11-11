@@ -1,0 +1,22 @@
+.reactangle-battery-soc 
+{
+    width: 280px;       /* Szerokość prostokąta */
+    height: 120px;       /* Wysokość prostokąta */
+    background-color: #ffffff; /* Kolor prostokąta */
+    border: 6px solid #838383;
+    border-radius: 8px; /* Zaokrąglenie rogów */
+    display:flex;
+    justify-content: left;
+    align-items: center;
+    padding-left: 6px
+}
+
+.reactangle-dynamic 
+{
+    height: 108px;
+    background-color: #20B202;
+    border-radius: 4px;   
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
