@@ -19,7 +19,8 @@ function PriceIndicator(props) {
                 </div> 
 
        
-            
+             
+    
             </div>
         )
     } else {

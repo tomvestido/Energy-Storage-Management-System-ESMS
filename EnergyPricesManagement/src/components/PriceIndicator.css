@@ -1,11 +1,10 @@
 .container-all {
     width: 70px;       /* Szerokość prostokąta */
-    height: 300px;  
+    height: 100px;  
     display: flex;             /* Użycie flexboxa */
     flex-direction: column-reverse; /* Ustawi elementy w kolumnie od dołu */
     justify-content: flex-start; /* Ustawienie elementów na początku osi Y */
     align-items: center; 
-    border: 1px solid #D88500;
 }
 
 .rectangle {
@@ -20,7 +19,6 @@
     font-size: 12px;
     font-weight: bolder;
     color: rgb(24, 24, 24);
-    order: 2;
 }
 
 .rectangle-header {
@@ -66,5 +64,10 @@
   }
 
   .decision {
+    width: 70px;
+    height: 40px;
     order: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
