@@ -5,7 +5,7 @@ function PriceList() {
     return (
         <> 
             <div className='container'>        
-                <PriceIndicator hour='00:00' price={prices.energyPrices[0]}  style='rectangle-header'/>
+                <PriceIndicator hour='00:00' price={prices.energyPrices[0]}  style='rectangle-header' decision={true}/>
                 <PriceIndicator hour='01:00' price={prices.energyPrices[1]}  style='rectangle-header'/>
                 <PriceIndicator hour='02:00' price={prices.energyPrices[2]}  style='rectangle-header'/>
                 <PriceIndicator hour='03:00' price={prices.energyPrices[3]}  style='rectangle-header'/>

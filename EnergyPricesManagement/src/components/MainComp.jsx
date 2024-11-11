@@ -15,15 +15,15 @@ function MainComp() {
     const [stateOfCharge, setStateOfCharge] = useState(0);
     const [chargePower , setChargePower] = useState(150);
     const [rechargePower , setRechargePower] = useState(100);
-    const [downThreshold, setDownThreshold] = useState(5);
+    const [downThreshold, setDownThreshold] = useState(0);
     const [upThreshold, setUpThreshold] = useState(25);
 
-    const [tablePricesData, setTablePricesData] = useState(prices.energyPrices);
-    const minimumEnergyPriceInterval0609 = Math.min(...tablePricesData);
-    const selectedHourInInterval0609 = tablePricesData.indexOf(minimumEnergyPriceInterval0609);
+
+    const energyPricesRechargeInterval1 = prices.energyPrices.slice(6, 10);
+    const minimumEnergyPriceRechargeInterval1 = Math.min(...energyPricesRechargeInterval1);
+    const selectedHourInRechargeInterval1 = energyPricesRechargeInterval1.indexOf(minimumEnergyPriceRechargeInterval1);
 
     
-    console.log(selectedHourInInterval0609);
     
     // odliczanie godziny
     useEffect(() => {
@@ -36,18 +36,22 @@ function MainComp() {
 
             
 
-            if(hour == 23) {
-                setHour(0);
-            }
+       
 
-            if(hour == 6 && stateOfCharge < upThreshold) {
-                setBmsStatus('Charging');
-            } else if (hour > 6 && stateOfCharge > upThreshold) {
+            if(hour == (selectedHourInRechargeInterval1 + 6) && stateOfCharge > downThreshold) {
+                setBmsStatus('Recharging');
+
+            } else if (hour == (selectedHourInRechargeInterval1 + 6) && stateOfCharge < downThreshold) {
                 setBmsStatus('Inaction');
+
             }
 
             if(hour == 10) {
                 setBmsStatus('Inaction');
+            }
+
+            if(hour == 23) {
+                setHour(0);
             }
 
             return () => {
@@ -57,7 +61,7 @@ function MainComp() {
         } else {
             setStatus('Stopped');
         }
-    }, [hourCounter, hour, stateOfCharge, upThreshold]) 
+    }, [hourCounter, hour, stateOfCharge, downThreshold, upThreshold, selectedHourInRechargeInterval1]) 
 
     useEffect(() => {
         if(bmsStatus == 'Charging') {
@@ -65,12 +69,19 @@ function MainComp() {
                 setStateOfCharge(stateOfCharge => stateOfCharge + 1);
             }, 1000);
 
-            // funkcja czyszczaca
+            return () => {
+                clearInterval(timer);
+            }
+        } else if (bmsStatus == 'Recharging') 
+        {
+            const timer = setInterval(() => {
+                setStateOfCharge(stateOfCharge => stateOfCharge - 1);
+            }, 1000);
+
             return () => {
                 clearInterval(timer);
             }
         }
-
 
     }, [stateOfCharge, bmsStatus])
 
@@ -79,7 +90,7 @@ function MainComp() {
             <PriceList />
 
             <div className='section-panels'> 
-                <LeftSection />
+                <LeftSection selectedHourRechargeInterval1={"0" + (selectedHourInRechargeInterval1 + 6) + ":00"} minimumEnergyPriceRechargeInterval1={minimumEnergyPriceRechargeInterval1}/>
                 <CenterSection bmsStatus={bmsStatus} batterySoC={stateOfCharge} batterySoCScaled={stateOfCharge * 2.72} chargePower={chargePower} rechargePower={rechargePower} downThreshold={downThreshold} upThreshold={upThreshold}/>
                 <RightSection />
             </div>
