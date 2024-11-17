@@ -10,7 +10,7 @@
 .rectangle {
     width: 70px;       /* Szerokość prostokąta */
     height: 60px;       /* Wysokość prostokąta */
-    background-color: #ffffff; /* Kolor prostokąta */
+    background-color: var(--section-color); /* Kolor prostokąta */
     border-radius: 8px; /* Zaokrąglenie rogów */
     display: inline-block;
     justify-content: center;
@@ -52,14 +52,14 @@
   .rectangle-value {
     width: 70px;       
     height: 34px;
-    background-color: #ffffff;
+    background-color: var(--section-color);
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: Montserrat, sans-serif;
     font-weight: 300;
     font-size: 14px;
-    color: rgb(15, 15, 15);
+    color: var(--text-color);
     border-radius: 8px;
   }
 

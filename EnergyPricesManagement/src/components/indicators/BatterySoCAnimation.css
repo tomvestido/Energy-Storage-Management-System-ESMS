@@ -2,7 +2,7 @@
 {
     width: 280px;       /* Szerokość prostokąta */
     height: 120px;       /* Wysokość prostokąta */
-    background-color: #ffffff; /* Kolor prostokąta */
+    background-color: var(--section-color-lighter); /* Kolor prostokąta */
     border: 6px solid #838383;
     border-radius: 8px; /* Zaokrąglenie rogów */
     display:flex;

@@ -1,12 +1,16 @@
-import './Styles.css'
+import './LeftSection.css';
+import { BatteryLow } from 'lucide-react';
 
 function LeftSection(props){
 
     return(
         <>  
             <div className='section-element'>
-                <h1 className='headline'>Discharging intervals</h1>
-
+                <div className='container-headline'>
+                    <BatteryLow className='img' size={32} color="#D88500" strokeWidth={1.25} absoluteStrokeWidth />                
+                    <text className='section-headline'>Discharging intervals</text>
+                </div>
+               
                 <p className='text-light'>Selected time in the interval 06:00 - 09:00</p>
                 <p className='text-semibold'>{props.selectedHourRechargeInterval1}</p>
 

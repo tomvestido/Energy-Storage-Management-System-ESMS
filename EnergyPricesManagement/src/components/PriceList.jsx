@@ -1,4 +1,4 @@
-import PriceIndicator from './PriceIndicator.jsx'   
+import PriceIndicator from './indicators/PriceIndicator.jsx'   
 import * as prices from './../data/energyPrices.jsx';
 
 function PriceList(props) {

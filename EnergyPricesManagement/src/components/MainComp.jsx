@@ -1,11 +1,13 @@
-import LeftSection from '../LeftSection.jsx'
-import RightSection from '../RightSection.jsx'
-import CenterSection from '../CenterSection.jsx'
+import LeftSection from './sections/LeftSection.jsx'
+import RightSection from './sections/RightSection.jsx'
+import CenterSection from './sections/CenterSection.jsx'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import PriceList from './PriceList.jsx'
 import './MainComp.css'
 import * as prices from './../data/energyPrices.jsx';
+import ThemeChangeButton from './buttons/ThemeChangeButton.jsx';
+import Clock from './indicators/Clock.jsx';
 
 function MainComp() {
     const [hour, setHour] = useState(0);
@@ -13,10 +15,11 @@ function MainComp() {
     const [status, setStatus] = useState('Stopped');
     const [bmsStatus, setBmsStatus] = useState('Inaction');
     const [stateOfCharge, setStateOfCharge] = useState(50);
-    const [chargePower , setChargePower] = useState(150);
-    const [rechargePower , setRechargePower] = useState(100);
-    const [downThreshold, setDownThreshold] = useState(0);
-    const [upThreshold, setUpThreshold] = useState(25);
+    const [chargePower, setChargePower] = useState(150);
+    const [rechargePower, setRechargePower] = useState(100);
+    const [downThreshold, setDownThreshold] = useState(20);
+    const [upThreshold, setUpThreshold] = useState(80);
+    const [showEditParameters, setShowEditParameters] = useState(false);
 
     // przedziały rozładowania 6-9 oraz 19-23
     const energyPricesRechargeInterval1 = prices.energyPrices.slice(6, 10);
@@ -36,41 +39,14 @@ function MainComp() {
     const minimumEnergyPriceChargeInterval2 = Math.min(...energyPricesChargeInterval2);
     const selectedHourInChargeInterval2 = energyPricesChargeInterval2.indexOf(minimumEnergyPriceChargeInterval2);
 
-    console.log(selectedHourInChargeInterval1);
- 
-
     // odliczanie godziny
     useEffect(() => {
-        if(hourCounter == 1) {
+        if(hourCounter == 1) 
+        {
             setStatus('Running');
             const timer = setInterval(() => {
                 setHour(hour => hour + 1);
             }, 3000);
-            
-            if(hour == (selectedHourInRechargeInterval1 + 6) && stateOfCharge > downThreshold) {
-                setBmsStatus('Recharging');
-
-            } else if (hour == (selectedHourInRechargeInterval1 + 6) && stateOfCharge < downThreshold) {
-                setBmsStatus('Inaction');
-
-            } else if (hour == (selectedHourInChargeInterval1) && stateOfCharge < upThreshold) {
-                setBmsStatus('Charging');
-
-            } else if (hour == (selectedHourInChargeInterval1) && stateOfCharge > upThreshold) {
-                setBmsStatus('Inaction');
-
-            } else if (hour == (selectedHourInRechargeInterval2 + 19) && stateOfCharge > downThreshold) {
-                setBmsStatus('Recharging');
-
-            } else if (hour == (selectedHourInRechargeInterval2 + 19) && stateOfCharge < downThreshold) {
-                setBmsStatus('Inaction');
-
-            } else if (hour == (selectedHourInChargeInterval2) && stateOfCharge < upThreshold) {
-                setBmsStatus('Charging');
-
-            } else if (hour == (selectedHourInChargeInterval2) && stateOfCharge > upThreshold) {
-                setBmsStatus('Inaction');
-            }
 
             if(hour == 23) {
                 setHour(0);
@@ -79,9 +55,29 @@ function MainComp() {
             return () => {
                 clearInterval(timer);
             }
+        }
+    }, [hourCounter, hour]);
 
+    useEffect(() => {
+        if(hourCounter == 1) {                 
+            if(hour == (selectedHourInRechargeInterval1 + 6) && stateOfCharge > downThreshold) {
+                setBmsStatus('Recharging');
+
+            } else if (hour == (selectedHourInChargeInterval1) && stateOfCharge < upThreshold) {
+                setBmsStatus('Charging');
+
+            } else if (hour == (selectedHourInRechargeInterval2 + 19) && stateOfCharge > downThreshold) {
+                setBmsStatus('Recharging');
+ 
+            } else if (hour == (selectedHourInChargeInterval2 + 10) && stateOfCharge < upThreshold) {
+                setBmsStatus('Charging');
+            }
+            else {
+                setBmsStatus('Inaction');
+            }
         } else {
             setStatus('Stopped');
+            setBmsStatus('Inaction');
         }
     }, [hourCounter, hour, stateOfCharge, downThreshold, upThreshold, selectedHourInRechargeInterval1, selectedHourInRechargeInterval2, selectedHourInChargeInterval1, selectedHourInChargeInterval2]) 
 
@@ -89,7 +85,7 @@ function MainComp() {
         if(bmsStatus == 'Charging') {
             const timer = setInterval(() => {
                 setStateOfCharge(stateOfCharge => stateOfCharge + 1);
-            }, 1000);
+            }, (1000/chargePower));
 
             return () => {
                 clearInterval(timer);
@@ -98,25 +94,41 @@ function MainComp() {
         {
             const timer = setInterval(() => {
                 setStateOfCharge(stateOfCharge => stateOfCharge - 1);
-            }, 1000);
+            }, (1000/rechargePower));
 
             return () => {
                 clearInterval(timer);
             }
         }
 
-    }, [stateOfCharge, bmsStatus])
+    }, [stateOfCharge, bmsStatus, chargePower, rechargePower]);
 
     return (
         <>  
+           
             <PriceList selectedHourInRechargeInterval1={(selectedHourInRechargeInterval1 + 6)} selectedHourInRechargeInterval2={(selectedHourInRechargeInterval2 + 19)} selectedHourInChargeInterval1={(selectedHourInChargeInterval1)} selectedHourInChargeInterval2={(selectedHourInChargeInterval2 + 10)}/>
 
             <div className='section-panels'> 
                 <LeftSection selectedHourRechargeInterval1={"0" + (selectedHourInRechargeInterval1 + 6) + ":00"} minimumEnergyPriceRechargeInterval1={maximumEnergyPriceRechargeInterval1} selectedHourRechargeInterval2={(selectedHourInRechargeInterval2 + 19) + ":00"} minimumEnergyPriceRechargeInterval2={maximumEnergyPriceRechargeInterval2 }/>
-                <CenterSection bmsStatus={bmsStatus} batterySoC={stateOfCharge} batterySoCScaled={stateOfCharge * 2.72} chargePower={chargePower} rechargePower={rechargePower} downThreshold={downThreshold} upThreshold={upThreshold}/>
+                
+                <CenterSection 
+                    showEditParameters={showEditParameters} 
+                    setShowEditParameters={setShowEditParameters}
+                    bmsStatus={bmsStatus} batterySoC={stateOfCharge} 
+                    batterySoCScaled={stateOfCharge * 2.72} chargePower={chargePower} 
+                    rechargePower={rechargePower} downThreshold={downThreshold} 
+                    upThreshold={upThreshold}
+                    onSubmit={data => {setRechargePower(data.rechargePower); setChargePower(data.chargePower); setDownThreshold(data.downThreshold); setUpThreshold(data.upThreshold)}}
+
+                />
+                
                 <RightSection selectedHourChargeInterval1={"0" + (selectedHourInChargeInterval1) + ":00"} minimumEnergyPriceChargeInterval1={minimumEnergyPriceChargeInterval1} selectedHourChargeInterval2={(selectedHourInChargeInterval2 + 10) + ":00"} minimumEnergyPriceChargeInterval2={minimumEnergyPriceChargeInterval2}/>
             </div>
 
+            <div className='control-panel'>
+                <h3>Simulation</h3>
+            </div>
+            
             <div className='control-panel'>
                 <button className='button-4' 
                 onClick={() => setHourCounter(1)} disabled={status == 'Running'}
@@ -129,13 +141,18 @@ function MainComp() {
                 <button className='button-4' 
                 onClick={() => setHour(0)} disabled={status == 'Stopped'}       
                 >Reset</button>
+
+                <button className='button-4' 
+                onClick={() => setShowEditParameters(!showEditParameters)}
+                >Edit </button>
+
+                 <ThemeChangeButton/>
             </div>
 
-            <p className='text-transparent'>Hour = {hour}</p>
-            <p className='text-transparent'>Status = {status}</p>
+            <Clock hour={hour}/>
+            <p className='text-transparent'>Status:  {status}</p>
     
         </>
     )
 }
-
 export default MainComp

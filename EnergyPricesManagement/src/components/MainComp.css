@@ -1,21 +1,234 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
+:root {
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  
+    --background-color: #F4F4F4;
+    --section-color: #ffffff;
+    --section-color-lighter: #ECEFF1;
+    --text-color: #000000;
+    --text-color-light: #4E4E4E;
+    --button-bg: #ffffff;
+    --button-text: #FFFFFF;
+    --button-hover: #0D47A1;
+    --button-disabled: #d6d6d6;
+}
+  
+/* gdy nastapi zmiana na dark*/
+[data-theme="dark"] {
+  --background-color: #121212;
+  --section-color: #1D1D1D;
+  --section-color-lighter: #363636;
+  --text-color: #FFFFFF;
+  --text-color-light: #ffffff;
+  --button-bg: #a6d7ff;
+  --button-text: #FFFFFF;
+  --button-hover: #0D47A1;
+  --button-disabled: #363636;
+}
+  
+* {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+  
+/* Sekcja pośrednia x3 */
+.section-element {
+  width: 532px;      
+  height: 468px;       
+  background-color: var(--section-color); 
+  border-radius: 8px; 
+  display:inline-block;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Sekcja pośrednia x3 - edycja nastaw*/
+.section-element-edit {
+  width: 532px;      
+  height: 468px;       
+  background-color: var(--section-color); 
+  border-radius: 8px; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+}
+
+/* Sekcja pośrednia x3 - kontener z elementami */
+.container-white {
+  background-color: var(--section-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 52px 0;  
+  gap: 10px; 
+}
+
+/* Sekcja pośrednia x3 - kontener z elementami - edycja nastaw */
+.container-white-edit {
+  width: 532px;
+  background-color: var(--section-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0;  
+  gap: 20px; 
+}
+
+.headline {
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  font-weight: bolder;
+  color: var(--text-color);
+  text-align: left;
+  background-color: transparent;
+  padding-left: 25px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.text-light {
+  margin-left: 25px; 
+  margin-bottom: 0px; 
+  background-color: transparent;
+  font-family: Montserrat, sans-serif;
+  font-size: 17px;
+  font-weight: 200;
+  color: var(--text-color-light);
+}
+
+.text-semibold {
+  margin-left: 25px; 
+  margin-bottom: 40px; 
+  background-color: transparent;
+  font-family: Montserrat, sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--text-color);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 65px 0;  
+  gap: 6px; 
+}
+
 .text-transparent {
-    background-color: transparent;
-    font-family: Montserrat, sans-serif;
-    text-align: center;
+  background-color: transparent;
+  font-family: Montserrat, sans-serif;
+  text-align: center;
 }
 
 .control-panel {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .section-panels {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 0;  
+  gap: 8px; 
+}
+
+h3 {
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-color);
+  text-align: left;
+  background-color: transparent;
+}
+
+.button-4 {
+  appearance: none;
+  background-color: var(--button-bg);
+  width: 120px;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  margin-left: 10px;
+  border-radius: 6px;
+  box-sizing: border-box;
+  color: #24292E;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  padding: 6px 16px;
+  position: relative;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  word-wrap: break-word;
+}
+  
+.button-4:hover {
+  background-color: #F3F4F6;
+  text-decoration: none;
+  transition-duration: 0.1s;
+}
+  
+.button-4:disabled {
+  background-color: var(--button-disabled);
+  border-color: rgba(27, 31, 35, 0.15);
+  color: #959DA5;
+  cursor: default;
+}
+  
+.button-4:active {
+  background-color: #EDEFF2;
+  box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+  transition: none 0s;
+}
+  
+.button-4:focus {
+  outline: 1px transparent;
+}
+  
+.button-4:before {
+  display: none;
+}
+  
+.button-4:-webkit-details-marker {
+  display: none;
+}
+
+.img {
+  background-color: transparent;
+}
+
+.section-headline {
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
+    font-weight: bolder;
+    color: var(--text-color);
+    text-align: left;
+    background-color: #ffffff;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: transparent;
+}
+
+.container-headline {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
-    margin: 50px 0;  
-    gap: 8px; /* Odstęp pomiędzy elementami */
-  }
+    margin-left: 25px;
+    margin-top: 10px;
+    gap: 8px; 
+    background-color: transparent;
+}
+
