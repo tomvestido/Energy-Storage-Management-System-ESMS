@@ -9,7 +9,8 @@ React.js
 ## Photos
 
 ![alt text](https://github.com/tomvestido/Energy-Storage-Management-System-ESMS/blob/main/EnergyPricesManagement/photos/dark-mode.PNG)
-
+![alt text](https://github.com/tomvestido/Energy-Storage-Management-System-ESMS/blob/main/EnergyPricesManagement/photos/light-mode.PNG)
+![alt text](https://github.com/tomvestido/Energy-Storage-Management-System-ESMS/blob/main/EnergyPricesManagement/photos/edit-mode.PNG)
 
 ## About me
 
