@@ -39,6 +39,12 @@ function MainComp() {
     const minimumEnergyPriceChargeInterval2 = Math.min(...energyPricesChargeInterval2);
     const selectedHourInChargeInterval2 = energyPricesChargeInterval2.indexOf(minimumEnergyPriceChargeInterval2);
 
+    // synchronizacja
+    document.documentElement.setAttribute(
+        'data-theme',
+        localStorage.getItem('theme') || 'light'
+    );
+
     // odliczanie godziny
     useEffect(() => {
         if(hourCounter == 1) 
@@ -105,12 +111,21 @@ function MainComp() {
 
     return (
         <>  
-           
-            <PriceList selectedHourInRechargeInterval1={(selectedHourInRechargeInterval1 + 6)} selectedHourInRechargeInterval2={(selectedHourInRechargeInterval2 + 19)} selectedHourInChargeInterval1={(selectedHourInChargeInterval1)} selectedHourInChargeInterval2={(selectedHourInChargeInterval2 + 10)}/>
+            <PriceList 
+                selectedHourInRechargeInterval1={(selectedHourInRechargeInterval1 + 6)} 
+                selectedHourInRechargeInterval2={(selectedHourInRechargeInterval2 + 19)} 
+                selectedHourInChargeInterval1={(selectedHourInChargeInterval1)} 
+                selectedHourInChargeInterval2={(selectedHourInChargeInterval2 + 10)}
+            />
 
             <div className='section-panels'> 
-                <LeftSection selectedHourRechargeInterval1={"0" + (selectedHourInRechargeInterval1 + 6) + ":00"} minimumEnergyPriceRechargeInterval1={maximumEnergyPriceRechargeInterval1} selectedHourRechargeInterval2={(selectedHourInRechargeInterval2 + 19) + ":00"} minimumEnergyPriceRechargeInterval2={maximumEnergyPriceRechargeInterval2 }/>
-                
+                <LeftSection 
+                    selectedHourRechargeInterval1={"0" + (selectedHourInRechargeInterval1 + 6) + ":00"} 
+                    minimumEnergyPriceRechargeInterval1={maximumEnergyPriceRechargeInterval1} 
+                    selectedHourRechargeInterval2={(selectedHourInRechargeInterval2 + 19) + ":00"} 
+                    minimumEnergyPriceRechargeInterval2={maximumEnergyPriceRechargeInterval2 }
+                />
+            
                 <CenterSection 
                     showEditParameters={showEditParameters} 
                     setShowEditParameters={setShowEditParameters}
@@ -119,10 +134,15 @@ function MainComp() {
                     rechargePower={rechargePower} downThreshold={downThreshold} 
                     upThreshold={upThreshold}
                     onSubmit={data => {setRechargePower(data.rechargePower); setChargePower(data.chargePower); setDownThreshold(data.downThreshold); setUpThreshold(data.upThreshold)}}
-
                 />
                 
-                <RightSection selectedHourChargeInterval1={"0" + (selectedHourInChargeInterval1) + ":00"} minimumEnergyPriceChargeInterval1={minimumEnergyPriceChargeInterval1} selectedHourChargeInterval2={(selectedHourInChargeInterval2 + 10) + ":00"} minimumEnergyPriceChargeInterval2={minimumEnergyPriceChargeInterval2}/>
+                <RightSection 
+                    selectedHourChargeInterval1={"0" + (selectedHourInChargeInterval1) + ":00"} 
+                    minimumEnergyPriceChargeInterval1={minimumEnergyPriceChargeInterval1} 
+                    selectedHourChargeInterval2={(selectedHourInChargeInterval2 + 10) + ":00"} 
+                    minimumEnergyPriceChargeInterval2={minimumEnergyPriceChargeInterval2}
+                />
+
             </div>
 
             <div className='control-panel'>
@@ -151,7 +171,6 @@ function MainComp() {
 
             <Clock hour={hour}/>
             <p className='text-transparent'>Status:  {status}</p>
-    
         </>
     )
 }

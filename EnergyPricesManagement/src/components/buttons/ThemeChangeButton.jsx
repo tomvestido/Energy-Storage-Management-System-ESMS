@@ -15,7 +15,8 @@ function ThemeChangeButton() {
             <button 
                 className='button-4'
                 onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-                >{theme === 'light' ? 'Light' : 'Dark'}</button>
+                >{theme === 'light' ? 'Light' : 'Dark'}
+            </button>
         </>    
     )
 }
