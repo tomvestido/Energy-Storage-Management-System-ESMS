@@ -20,8 +20,6 @@ function SettingInput(props) {
 
 // wskazanie wymaganych typow danych dla props
 SettingInput.propTypes = {
-    style: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
     value: PropTypes.number.isRequired
 }
 

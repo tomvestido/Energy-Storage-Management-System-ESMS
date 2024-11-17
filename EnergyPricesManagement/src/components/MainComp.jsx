@@ -39,12 +39,6 @@ function MainComp() {
     const minimumEnergyPriceChargeInterval2 = Math.min(...energyPricesChargeInterval2);
     const selectedHourInChargeInterval2 = energyPricesChargeInterval2.indexOf(minimumEnergyPriceChargeInterval2);
 
-    // synchronizacja
-    document.documentElement.setAttribute(
-        'data-theme',
-        localStorage.getItem('theme') || 'light'
-    );
-
     // odliczanie godziny
     useEffect(() => {
         if(hourCounter == 1) 
@@ -151,24 +145,26 @@ function MainComp() {
             
             <div className='control-panel'>
                 <button className='button-4' 
-                onClick={() => setHourCounter(1)} disabled={status == 'Running'}
+                    onClick={() => setHourCounter(1)} 
+                    disabled={status == 'Running'}
                 >Start</button>
 
                 <button className='button-4' 
-                onClick={() => setHourCounter(0)} disabled={status == 'Stopped'}       
+                    onClick={() => setHourCounter(0)} 
+                    disabled={status == 'Stopped'}       
                 >Stop</button>
 
                 <button className='button-4' 
-                onClick={() => setHour(0)} disabled={status == 'Stopped'}       
+                    onClick={() => setHour(0)} 
+                    disabled={status == 'Stopped'}       
                 >Reset</button>
 
                 <button className='button-4' 
-                onClick={() => setShowEditParameters(!showEditParameters)}
+                    onClick={() => setShowEditParameters(!showEditParameters)}
                 >Edit </button>
 
                  <ThemeChangeButton/>
             </div>
-
             <Clock hour={hour}/>
             <p className='text-transparent'>Status:  {status}</p>
         </>

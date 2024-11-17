@@ -1,17 +1,17 @@
 .container-all {
-    width: 70px;       /* Szerokość prostokąta */
+    width: 70px;       
     height: 100px;  
-    display: flex;             /* Użycie flexboxa */
-    flex-direction: column-reverse; /* Ustawi elementy w kolumnie od dołu */
-    justify-content: flex-start; /* Ustawienie elementów na początku osi Y */
+    display: flex;            
+    flex-direction: column-reverse; 
+    justify-content: flex-start; 
     align-items: center; 
 }
 
 .rectangle {
-    width: 70px;       /* Szerokość prostokąta */
-    height: 60px;       /* Wysokość prostokąta */
-    background-color: var(--section-color); /* Kolor prostokąta */
-    border-radius: 8px; /* Zaokrąglenie rogów */
+    width: 70px;       
+    height: 60px;       
+    background-color: var(--section-color);
+    border-radius: 8px; 
     display: inline-block;
     justify-content: center;
     align-items: center;

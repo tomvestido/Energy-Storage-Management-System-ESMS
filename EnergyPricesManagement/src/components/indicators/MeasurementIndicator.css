@@ -1,8 +1,8 @@
 .rectangle-measurement {
-    width: 130px;       /* Szerokość prostokąta */
-    height: 65px;       /* Wysokość prostokąta */
-    background-color: var(--section-color-lighter); /* Kolor prostokąta */
-    border-radius: 8px; /* Zaokrąglenie rogów */
+    width: 130px;      
+    height: 65px;       
+    background-color: var(--section-color-lighter); 
+    border-radius: 8px; 
     display:inline-block;
     justify-content: center;
     align-items: center;
