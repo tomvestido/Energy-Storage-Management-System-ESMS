@@ -1,9 +1,8 @@
-import { useEffect } from 'react';
-import useLocalStorageState from 'use-local-storage-state';
+import { useEffect, useState } from 'react';
 import './ThemeChangeButton.css';
 
 function ThemeChangeButton() {    
-    const [theme, setTheme] = useLocalStorageState('light');
+    const [theme, setTheme] = useState('light');
     
     useEffect(() => {
         document.documentElement.setAttribute('data-theme', theme)
