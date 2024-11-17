@@ -8,6 +8,9 @@ React.js
 
 ## Photos
 
+![alt text](https://github.com/tomvestido/Energy-Storage-Management-System-ESMS/blob/main/EnergyPricesManagement/photos/dark-mode.PNG)
+
+
 ## About me
 
 [LinkedIn](https://www.linkedin.com/in/tomasz-kiecka/)
