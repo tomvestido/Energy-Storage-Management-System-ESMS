@@ -1,13 +1,20 @@
 .menu {
     width: 67px;       
-    height: 1000px;  
-    padding-top: 50px;     
+    height: 100%;  
     display: inline-block;
     justify-content: center;
     align-items: center;
     border-right: 1px solid #E8E8E8;
     background-color: #f5f5f5;
     stroke: rgb(0, 0, 0);
+}
+
+.menu-icons-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
 }
 
 .menu-icon {

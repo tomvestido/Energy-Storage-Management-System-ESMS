@@ -1,50 +1,48 @@
 .menu-button {
-    width: 39px;
-    height: 39px;
-    border-radius: 15%;
-    border-color: #ffffff;
-    margin: 14px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    background-color: transparent;
+  width: 39px;
+  height: 39px;
+  border-radius: 15%;
+  border-color: #ffffff;
+  margin: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: transparent;
 }
 
 .menu-button:hover {
-    background-color: #85b0ff;
-    transition-duration: 0.8s;
-    stroke: white;
+  background-color: #85b0ff;
+  transition-duration: 0.8s;
+  stroke: white;
 }
 
 .menu-img {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 .menu-img:hover {
-    stroke: white;
+  stroke: white;
 }
 
 .icon-button {
-    width: 39px;
-    height: 39px;
-    border-radius: 12%;
-    background: transparent;  
-    border: none;            
-    margin: 14px;
-    cursor: pointer;        
-    display: flex;            
-    justify-content: center;  
-    align-items: center;      
-  }
+  width: 39px;
+  height: 39px;
+  border-radius: 12%;
+  background: transparent;  
+  border: none;            
+  margin: 14px;
+  cursor: pointer;        
+  display: flex;            
+  justify-content: center;  
+  align-items: center;      
+}
   
-  .icon-button:hover {
-    background-color: #3e80fc; 
-    transition: background-color 0.8s ease-in-out; 
-  }
+.icon-button:hover {
+  background-color: #3e80fc; 
+  transition: background-color 0.8s ease-in-out; 
+ }
   
-  .icon-button:focus {
-    outline: none; 
-  }
-
-
+.icon-button:focus {
+  outline: none; 
+}

@@ -232,3 +232,11 @@ h3 {
     background-color: transparent;
 }
 
+.main-frame-right {
+  width: 1853px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;    
+}
+

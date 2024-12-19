@@ -1,0 +1,21 @@
+.page-dashboard {
+    width: 1853px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    gap: 10px;
+    background-color: #5c5c5c;
+}
+
+.page-dashboard-blocks {
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    gap: 10px;
+}
+
+.headline-dashboard {
+    margin: 40px;
+    font-size: 18px;
+}
